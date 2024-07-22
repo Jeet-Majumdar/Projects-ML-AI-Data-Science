@@ -32,7 +32,7 @@ def generate_response(prompt):
 
 interface = gr.Interface(
     fn = generate_response,
-    input = gr.Textbox(lines = 4, placeholder = "Enter your prompt")
+    input = gr.Textbox(lines = 4, placeholder = "Enter your prompt"),
     outputs = "text"
 )
 
