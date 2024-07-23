@@ -57,7 +57,7 @@ def lambda_handler(evert, context):
     if generate_blog:
         current_time = datetime.now().strftime('%H%M%S')
         s3_key = f"blog_output/{current_time}.txt"
-        s3_bucket = 'aws_bedrock_project1'
+        s3_bucket = 'aws_bedrock_llama2_project1'
         save_blog_details_s3(s3_key=s3_key, s3_bucket=s3_bucket, generate_blog=generate_blog)
     else:
         print("No blog was generated.")
