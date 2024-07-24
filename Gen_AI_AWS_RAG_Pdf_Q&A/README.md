@@ -2,12 +2,12 @@
 # RAG application to answer questions from a bunch of pdfs.
 
 ```meramid
-flowchart TD;
-  A[Question] --> B((LLM))
-  A --> |Similarity Search| C[(Vectorstore)]
-  C --> D[Relevant Chunks]
-  D --> B
-  B --> E([Answer])
+flowchart LR
+A[Question] --> B((LLM))
+A --> |Similarity Search| C[(Vectorstore)]
+C --> D[Relevant Chunks]
+D --> B
+B --> E([Answer])
 ```
 **Essentially at the core of the project involves two steps:**
 1. The pdf will be stored in a Vector store
