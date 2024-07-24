@@ -1,5 +1,5 @@
-# practice-data-analysis
-Practice Data Analysis of Different Types
+# Projects-ML-AI-Data-Science
+Data Analysis and AI Implementations of Different Types
 
 ```python
 # Create new environment
