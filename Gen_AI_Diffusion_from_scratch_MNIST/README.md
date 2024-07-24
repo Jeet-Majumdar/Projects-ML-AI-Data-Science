@@ -19,6 +19,8 @@ The `UNet2DModel` model has a number of improvements over our basic UNet above:
 *   Conditioning on the timestep. 
 *   Downsampling and upsampling blocks with learnable parameters
 
+## TODO:
+
 Next in `Diffusion_from_scratch_MNIST_DDPM.ipynb` we do the training with step by step addition of noise as per the phenomenal paper [Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239) (DDPM).
 
 Here, the gist is, although the noise is supposed to be added step by step in the following manner, we will be doing something clever to expedite the process.
@@ -33,3 +35,4 @@ During generation time:
 3. repeat this process to the exact number of times by which you downscaled the image
 
 
+We will not do the full training part, instead we will do finetunning.
