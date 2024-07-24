@@ -40,4 +40,7 @@ We will not do the full training part, instead we will do finetunning.
 
 ----------------
 
-Finetuning of Face generation model. `Diffusion_finetuning_face
+Finetuning of Face generation model. `Diffusion_finetuning_face_generation.ipynb`
+
+Here we will use pretrained model `google/ddpm-celebahq-256`.
+We will use `DDPMPipeline` to get the image pipeline and `DDIMScheduler` to finetune and infer.
