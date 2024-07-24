@@ -1,8 +1,9 @@
 
 # RAG application to answer questions from a bunch of pdfs.
 
-```meramid
+```mermaid
 flowchart LR
+
 A[Question] --> B((LLM))
 A --> |Similarity Search| C[(Vectorstore)]
 C --> D[Relevant Chunks]
