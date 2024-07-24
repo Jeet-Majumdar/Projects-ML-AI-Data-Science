@@ -1,5 +1,6 @@
 # Diffusion Models from Scratch to generate numbers from MNIST
 
+**First we will try to train and create a model which can generate MNIST dataset numbers**
 Basic Image Diffusion model has the same philosophy as `UNet`.
 
 In UNet we scale down to a lower latent space and again scale up to high dimensions.
@@ -36,3 +37,7 @@ During generation time:
 
 
 We will not do the full training part, instead we will do finetunning.
+
+----------------
+
+Finetuning of Face generation model. `Diffusion_finetuning_face
