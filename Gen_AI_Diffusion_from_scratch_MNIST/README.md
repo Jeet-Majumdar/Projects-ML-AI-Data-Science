@@ -9,7 +9,17 @@ In Diffusion, we do this lower lattent space breakdown and again scalling up ver
 A single model is repetetively used to do this.
 
 In the `Diffusion_from_scratch_MNIST_Basic.ipynb` we do the training using basic UNet and random addition of noise (corruption). This is to show the initial performance if we do not add noise step by step.
-Next in `Diffusion_from_scratch_MNIST_DDPM.ipynb` we do the training with step by step addition of noise as per the phenomenal paper [Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239)DDPM.
+Next in `Diffusion_from_scratch_MNIST_UNet2DModel.ipynb` we improve the update the basic model of UNet.
+The `UNet2DModel` model has a number of improvements over our basic UNet above:
+
+*   GroupNorm applies group normalization to the inputs of each block
+*   Dropout layers for smoother training
+*   Multiple resnet layers per block (if layers_per_block isn't set to 1)
+*   Attention (usually used only at lower resolution blocks)
+*   Conditioning on the timestep. 
+*   Downsampling and upsampling blocks with learnable parameters
+
+Next in `Diffusion_from_scratch_MNIST_DDPM.ipynb` we do the training with step by step addition of noise as per the phenomenal paper [Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239) (DDPM).
 
 Here, the gist is, although the noise is supposed to be added step by step in the following manner, we will be doing something clever to expedite the process.
 The basic idea is:
@@ -22,6 +32,4 @@ During generation time:
 2. take this and again feed into the model to get more denoised image.
 3. repeat this process to the exact number of times by which you downscaled the image
 
-------
 
-In the DDPM part, we actually generate the amount the noise to be added at each step in a single shot, and also upgrade to a better UNet model called `UNet2DModel`.
