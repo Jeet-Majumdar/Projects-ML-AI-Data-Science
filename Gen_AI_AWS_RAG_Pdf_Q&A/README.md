@@ -2,7 +2,7 @@
 # RAG application to answer questions from a bunch of pdfs.
 
 ```meramid
-flowchart TD
+flowchart TD;
   A[Question] --> B((LLM))
   A --> |Similarity Search| C[(Vectorstore)]
   C --> D[Relevant Chunks]
