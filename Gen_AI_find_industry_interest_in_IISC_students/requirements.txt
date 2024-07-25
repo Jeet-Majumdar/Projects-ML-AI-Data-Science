@@ -1,0 +1,9 @@
+numpy
+pandas
+openpyxl
+pywin32
+langchain
+langchain_community
+huggingface_hub
+# langchain-huggingface
+python-decouple
