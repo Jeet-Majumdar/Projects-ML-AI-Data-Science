@@ -37,7 +37,6 @@ def template_single(company):
             answer = res.split('?')[-1].replace('\n', '')\
                 .strip().split(':')[-1].replace('.', '')\
                 .replace('"', '')
-            # print(answer)
             ans_parts = answer.split(',')
             sector = ans_parts[0].strip().lower()
             company_type = ans_parts[1].strip().lower()
@@ -48,6 +47,7 @@ def template_single(company):
             else:
                 company_type = ''
             about = sector + "+" + company_type
+            print(answer)
             return about
     except:
         return ""
