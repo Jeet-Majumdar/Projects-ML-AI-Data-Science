@@ -29,7 +29,7 @@ def template_single(company):
     prompt = prompt_template.format(query=query)
     output = llm.invoke(prompt)
     res = output.split('\n')[-1]
-    time.sleep(60) # To prevent rate limit from happening.
+    time.sleep(30) # To prevent rate limit from happening.
     try:
         if "I don't know" in res:
             return ""
