@@ -1,8 +1,5 @@
 
 import time
-
-time.sleep(60*60) # Run after an hour
-
 import pandas as pd
 from decouple import config
 from langchain.prompts import PromptTemplate
