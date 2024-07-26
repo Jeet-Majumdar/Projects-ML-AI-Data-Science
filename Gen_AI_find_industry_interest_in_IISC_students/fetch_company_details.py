@@ -12,7 +12,7 @@ huggingfacehub_api_token = config('HUGGING_FACE_API_TOKEN')
 llm = HuggingFaceHub(repo_id='tiiuae/falcon-7b-instruct', 
                      huggingfacehub_api_token=huggingfacehub_api_token)
 
-template = """Answer the question in no more than 3 words, and if the answer is not contained within the text below, say "I don't know"
+template = """If you cannot answer, say "I don't know".
 Question: {query}\n\n
 Answer: \n
 """.strip()
@@ -23,7 +23,9 @@ prompt_template = PromptTemplate(
 )
 
 def template_single(company):
-    query = f'What industry does {company} specialize in?'
+    # query = f'What industry does {company} specialize in?'
+    # query = f'Is {company} a Product or Service company? Answer with a single word.'
+    query = f'Which sector does {company} belong to? Also is it a product based company or a service based company? Answer in the particular format: (sector, product/service)'
     prompt = prompt_template.format(query=query)
     output = llm.invoke(prompt)
     res = output.split('\n')[-1]
@@ -32,14 +34,25 @@ def template_single(company):
         if "I don't know" in res:
             return ""
         else:
-            industry = res.split('?')[-1].replace('\n', '')\
+            answer = res.split('?')[-1].replace('\n', '')\
                 .strip().split(':')[-1].replace('.', '')\
                 .replace('"', '')
-            print(industry)
-            return industry
+            # print(answer)
+            ans_parts = answer.split(',')
+            sector = ans_parts[0].strip().lower()
+            company_type = ans_parts[1].strip().lower()
+            if 'product' in company_type:
+                company_type = 'product'
+            elif 'service' in company_type:
+                company_type = 'service'
+            else:
+                company_type = ''
+            about = sector + "+" + company_type
+            return about
     except:
         return ""
 
+# template_single('Micron')
 
 df = pd.read_excel('recruters.xlsx')
 
