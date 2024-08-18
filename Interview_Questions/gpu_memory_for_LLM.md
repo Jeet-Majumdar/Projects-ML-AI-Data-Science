@@ -16,4 +16,4 @@ Where:
 **𝗧𝗵𝗶𝘀 𝗼𝘃𝗲𝗿𝗵𝗲𝗮𝗱 𝗶𝘀𝗻'𝘁 𝗷𝘂𝘀𝘁 𝗮 𝗯𝘂𝗳𝗳𝗲𝗿 —** it's crucial for additional memory used during inference, such as storing activations (intermediate results) of the model. Without accounting for this, you might underestimate the memory requirements, leading to bottlenecks during inference.
 
 Ref:
-1. [𝗛𝗼𝘄 𝗺𝘂𝗰𝗵 𝗚𝗣𝗨 𝗺𝗲𝗺𝗼𝗿𝘆 𝗶𝘀 𝗻𝗲𝗲𝗱𝗲𝗱 𝘁𝗼 s𝗲𝗿𝘃𝗲 𝗮 𝗟𝗮𝗿𝗴𝗲 𝗟𝗮𝗻𝗴𝘂𝗮𝗴𝗲 𝗠𝗼𝗱𝗲𝗹](https://ksingh7.medium.com/calculate-how-much-gpu-memory-you-need-to-serve-any-llm-67301a844f21)
+1. [𝗛𝗼𝘄 𝗺𝘂𝗰𝗵 𝗚𝗣𝗨 𝗺𝗲𝗺𝗼𝗿𝘆 𝗶𝘀 𝗻𝗲𝗲𝗱𝗲𝗱 𝘁𝗼  s𝗲𝗿𝘃𝗲 𝗮 𝗟𝗮𝗿𝗴𝗲 𝗟𝗮𝗻𝗴𝘂𝗮𝗴𝗲 𝗠𝗼𝗱𝗲𝗹](https://ksingh7.medium.com/calculate-how-much-gpu-memory-you-need-to-serve-any-llm-67301a844f21)
