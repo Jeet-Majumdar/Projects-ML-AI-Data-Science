@@ -57,6 +57,7 @@ for t in range(block_size):
 torch.manual_seed(1337)
 batch_size = 4 # how many independent sequences will be process in parallel?
 block_size = 8 # what is the maximum context length for prediction?
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 def get_batch(split):
   # generate a small batch of data of inputs x and targets y
@@ -64,6 +65,7 @@ def get_batch(split):
   ix = torch.randint(len(data) - block_size, (batch_size,)) # generate batch_size number of random number(random offsets in the data) between 0 and (len(data) - block_size)
   x = torch.stack([data[i: i+block_size] for i in ix])
   y = torch.stack([data[i+1: i+block_size+1] for i in ix])
+  x, y = x.to(device), y.to(device)
   return x, y
 
 xb, yb = get_batch('train')
@@ -122,12 +124,13 @@ class BigramLanguageModel(nn.Module):
       idx = torch.cat((idx, idx_next), dim=-1) # (B, T+1)
     return idx
 
-m = BigramLanguageModel(vocab_size)
+model = BigramLanguageModel(vocab_size)
+m = model.to(device)
 logits, loss = m(xb, yb)
 print(logits.shape)
 print(loss)
 
-idx = torch.zeros((1, 1), dtype=torch.long) # 0 = New line character
+idx = torch.zeros((1, 1), dtype=torch.long, device=device) # 0 = New line character
 print(decode(m.generate(idx, max_new_tokens=100)[0].tolist()))
 
 # create a PyTorch optimizer
@@ -146,5 +149,5 @@ for steps in range(10000):
 
 print(loss.item())
 
-idx = torch.zeros((1, 1), dtype=torch.long) # 0 = New line character
+idx = torch.zeros((1, 1), dtype=torch.long, device=device) # 0 = New line character
 print(decode(m.generate(idx, max_new_tokens=500)[0].tolist()))
