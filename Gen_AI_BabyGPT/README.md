@@ -6,3 +6,4 @@ Key Points:
 3. Mathematical trick in self-attention (Using Matrix Multiplication)
 
 Resume from: https://youtu.be/kCc8FmEb1nY?t=4757
+My Colab sheet: https://colab.research.google.com/drive/113nSOmMlqAGs282qTYLcVfZSxV8vZu1z#scrollTo=CGdaOtLJ_vpq
