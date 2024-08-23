@@ -5,5 +5,5 @@ Key Points:
 2. Implementing attention from scratch (Basic)
 3. Mathematical trick in self-attention (Using Matrix Multiplication)
 
-Resume from: https://youtu.be/kCc8FmEb1nY?t=4757
+Resume from: https://youtu.be/kCc8FmEb1nY?t=4763
 My Colab sheet: https://colab.research.google.com/drive/113nSOmMlqAGs282qTYLcVfZSxV8vZu1z#scrollTo=CGdaOtLJ_vpq
