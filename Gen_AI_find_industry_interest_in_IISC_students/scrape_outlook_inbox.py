@@ -8,13 +8,83 @@ root_folder = outlook.Folders.Item('jeetmajumdar@iisc.ac.in')
 
 #inbox messges
 print("reading Inbox...")
-Inbox = root_folder.Folders['Placement']
-messages = Inbox.items
+Inbox = root_folder.Folders['Inbox']
+messages_inbox = Inbox.items
+
+print("reading Placement...")
+Placement = root_folder.Folders['Placement']
+messages_placement = Placement.items
+
+print("reading NotSend...")
+NotSend = root_folder.Folders['Email_NotSend']
+messages_notsend = NotSend.items
 
 company_emails = ""
 with open('recruters.csv', 'w') as f:
     f.write(f"Date,Name,Company,Email\n")
-    for m in messages:
+    for m in messages_inbox:
+        item_subject = m.Subject
+        if "IISc || Full time Placement Invite 2024-25" in item_subject:
+            company = item_subject.split('||')[-1].replace('\n', '').replace(',', '')
+            company = re.sub('[^0-9a-zA-Z]+', '', company)
+            to = str(m.To).replace('\n', '').replace(',', '')
+            sender = str(m.SenderEmailType).replace('\n', '').replace(',', '')
+            date = m.SentOn.strftime('%d-%m-%Y')
+            body = str(m.Body)
+            try:
+                name = body.split('\n')[0].replace(',', '').replace('To:', '')\
+                    .replace(':', '').replace('Hello', '').replace('Dear', '').strip()
+                name = re.sub('[^0-9a-zA-Z]+', '', name)
+                statement = f"{date},{name},{company},{to}"
+                company_emails += f"{to} "
+                f.write(f"{statement}\n")
+                print(statement)
+            except:
+                try:
+                    name = ""
+                    statement = f"{date},{name},{company},{to}"
+                    company_emails += f"{to} "
+                    f.write(f"{statement}\n")
+                    print(statement)
+                except:
+                    name = ""
+                    statement = f",,{company},{to}"
+                    company_emails += f"{to} "
+                    f.write(f"{statement}\n")
+                    print(statement)
+    
+    for m in messages_placement:
+        item_subject = m.Subject
+        if "IISc || Full time Placement Invite 2024-25" in item_subject:
+            company = item_subject.split('||')[-1].replace('\n', '').replace(',', '')
+            company = re.sub('[^0-9a-zA-Z]+', '', company)
+            to = str(m.To).replace('\n', '').replace(',', '')
+            sender = str(m.SenderEmailType).replace('\n', '').replace(',', '')
+            date = m.SentOn.strftime('%d-%m-%Y')
+            body = str(m.Body)
+            try:
+                name = body.split('\n')[0].replace(',', '').replace('To:', '')\
+                    .replace(':', '').replace('Hello', '').replace('Dear', '').strip()
+                name = re.sub('[^0-9a-zA-Z]+', '', name)
+                statement = f"{date},{name},{company},{to}"
+                company_emails += f"{to} "
+                f.write(f"{statement}\n")
+                print(statement)
+            except:
+                try:
+                    name = ""
+                    statement = f"{date},{name},{company},{to}"
+                    company_emails += f"{to} "
+                    f.write(f"{statement}\n")
+                    print(statement)
+                except:
+                    name = ""
+                    statement = f",,{company},{to}"
+                    company_emails += f"{to} "
+                    f.write(f"{statement}\n")
+                    print(statement)
+    
+    for m in messages_notsend:
         item_subject = m.Subject
         if "IISc || Full time Placement Invite 2024-25" in item_subject:
             company = item_subject.split('||')[-1].replace('\n', '').replace(',', '')
